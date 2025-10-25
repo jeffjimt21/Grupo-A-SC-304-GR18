@@ -1,30 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package ColaBatalla;
 
-/**
- *
- * @author lucas
- */
+package pilas;
+
 import tropas.Tropa;
 
+
 public class Nodo {
-    private Tropa dato;
-    private Nodo siguiente= null;
+    //Atributos
+    private Tropa tropa;
+    private Nodo siguiente;
 
-    public Nodo(Tropa dato) {
-        this.dato = dato;
-        this.siguiente=null;
+    public Nodo(Tropa tropa) {
+        this.tropa = tropa;
+        this.siguiente = null;
     }
 
-    public Tropa getDato() {
-        return dato;
+    public Tropa getTropa() {
+        return tropa;
     }
 
-    public void setDato(Tropa dato) {
-        this.dato = dato;
+    public void setTropa(Tropa tropa) {
+        this.tropa = tropa;
     }
 
     public Nodo getSiguiente() {
@@ -38,3 +33,5 @@ public class Nodo {
     
     
 }
+
+  
