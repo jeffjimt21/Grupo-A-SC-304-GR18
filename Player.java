@@ -22,50 +22,37 @@ public class Player extends Jugadores {
     
     
     public String IngresarTropa(int cantidad, Tropa tropa, int ronda) {
-     
-        String mensaje="";
-         int maximo = ronda + 1;
-         if (cantidad > maximo) {
-                mensaje="Estas excediendo la cantidad de tropas por ronda";
-                 return mensaje;
-              }
+        String mensaje = "";
+        int maximo = ronda + 1;
 
-        
-         if (tropa == null) {
-                mensaje="No se puede agregar una tropa nula.";
-                return mensaje;
-            }
-
-            int contador = 0;
-            while (contador < cantidad) {
-               this.getPila().push(tropa);//este this es para saber que se esta refiriendo a la clase Jugador
-               contador++;
-                 }
-            mensaje=("Se ingresaron " + cantidad + " tropas del tipo " + tropa.getTipo());
-
+        if (cantidad > maximo) {
+            mensaje = "Estás excediendo la cantidad de tropas por ronda";
             return mensaje;
-}
-    
-    public int SeleccionarCamino(int caminos){
-        
-        
-        if (caminos==1) {
-            return 1;
         }
-        
-        else if (caminos ==2) {
+
+        if (tropa == null) {
+            mensaje = "No se puede agregar una tropa nula.";
+            return mensaje;
+        }
+
+        int contador = 0;
+        while (contador < cantidad) {
+            this.getPila().push(tropa); 
+            contador++;
+        }
+        mensaje = ("Se ingresaron " + cantidad + " tropas del tipo " + tropa.getTipo());
+
+        return mensaje;
+    }
+
+    // Método para seleccionar el camino
+    public int SeleccionarCamino(int caminos) {
+        if (caminos == 1) {
+            return 1;
+        } else if (caminos == 2) {
             return 2;
         } else {
-        
-            return 0;
-        
+            return 0;  // Si no hay caminos válidos
         }
-    
     }
-    
-   
-
-    
-    
-    
 }
