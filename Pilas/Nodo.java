@@ -1,5 +1,5 @@
 
-package pilas;
+package Pilas;
 
 import tropas.Tropa;
 

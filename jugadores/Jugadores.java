@@ -1,6 +1,6 @@
 package jugadores;
 
-import ColaBatalla.Cola;
+import ColaBatalla.ColaBatalla.Cola;
 import castillo.Castillo;
 import pilas.PilaDinamica;
 import tropas.Tropa;
