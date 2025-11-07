@@ -1,7 +1,7 @@
 
 package Batalla;
 
-import ColaBatalla.ColaBatalla.Cola;
+import ColaBatalla.Cola;
 import jugadores.CPU;
 import jugadores.Player;
 
