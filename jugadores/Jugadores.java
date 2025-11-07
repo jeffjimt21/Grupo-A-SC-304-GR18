@@ -1,9 +1,7 @@
 package jugadores;
 
-import ColaBatalla.ColaBatalla.Cola;
+import Pilas.PilaDinamica;
 import castillo.Castillo;
-import pilas.PilaDinamica;
-import tropas.Tropa;
 
 public class Jugadores {
     private String nombre;
