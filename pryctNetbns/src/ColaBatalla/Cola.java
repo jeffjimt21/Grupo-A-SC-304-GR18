@@ -1,0 +1,68 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ColaBatalla;
+
+import tropas.Tropa;
+
+/**
+ *
+ * @author lucas
+ */
+public class Cola {
+    private Nodo frente;
+    private Nodo ultimo;
+    
+    public Cola(){
+        this.frente=null;
+        this.ultimo=null;
+    }
+    
+    public void encolar(Tropa dato){
+        Nodo nuevo = new Nodo(dato);
+        if (ultimo!=null){
+            ultimo.setSiguiente(nuevo);
+        
+        }
+        ultimo=nuevo;
+        if (frente==null) {
+            frente= nuevo;
+        }
+        
+    
+    }
+    
+    public Tropa desencolar() throws Exception{
+        if (frente==null) {
+            throw new Exception("Cola vacia");
+        }
+        
+        Tropa dato = frente.getDato();
+        String tipo = dato.getTipo();
+        frente=frente.getSiguiente();
+        if (frente==null) {
+            ultimo=null;
+        }
+        return dato;
+    
+    }
+    
+    public Tropa frente()throws Exception{
+    
+        if (frente==null) {
+            throw new Exception ("Cola vacia");
+        }
+        
+        return frente.getDato();
+        
+    }
+    
+    public boolean estaVacia(){
+        return frente==null;
+    }
+    
+    
+
+    
+}
