@@ -6,6 +6,9 @@ package Formularios;
 
 import jugadores.CPU;
 import jugadores.Player;
+import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -129,7 +132,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        int opcion = JOptionPane.showConfirmDialog(
+            this,
+            "¿Desea salir del juego?",
+            "Salir",
+            JOptionPane.YES_NO_OPTION
+    );
+    
+    if (opcion == JOptionPane.YES_OPTION) {
+        System.exit(0);
+     }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
