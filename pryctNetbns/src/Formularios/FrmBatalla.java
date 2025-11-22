@@ -20,6 +20,8 @@ import tropas.Arquero;
 import tropas.Caballero;
 import tropas.Mago;
 import tropas.Tropa;
+import javax.swing.ImageIcon; 
+import java.awt.Image;
 public class FrmBatalla extends javax.swing.JFrame {
 
     /**
@@ -40,6 +42,9 @@ public class FrmBatalla extends javax.swing.JFrame {
     public FrmBatalla(String nombreJugador) {
         this.nombreJugador = nombreJugador;
         initComponents();
+        lblImagenTropa.setSize(100, 100);
+lblImagenTropa.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // solo para ver el recuadro
+
         cpu = new CPU();
         
         jugador = new Player(nombreJugador);
@@ -82,7 +87,7 @@ public class FrmBatalla extends javax.swing.JFrame {
         lbltextoTropa = new javax.swing.JLabel();
         btnVolver1 = new javax.swing.JButton();
         lbltextoTropa1 = new javax.swing.JLabel();
-        lblTropasAgregadas = new javax.swing.JLabel();
+        lblImagenTropa = new javax.swing.JLabel();
         lblSeleccionarTropas = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         lblSeleccionarCamino = new javax.swing.JLabel();
@@ -220,17 +225,16 @@ public class FrmBatalla extends javax.swing.JFrame {
         lbltextoTropa1.setText("Tropas");
         jPanel1.add(lbltextoTropa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        lblTropasAgregadas.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        lblTropasAgregadas.setForeground(new java.awt.Color(0, 153, 153));
-        lblTropasAgregadas.setText("\"\"");
-        jPanel1.add(lblTropasAgregadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, -1));
+        lblImagenTropa.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        lblImagenTropa.setForeground(new java.awt.Color(0, 153, 153));
+        lblImagenTropa.setPreferredSize(new java.awt.Dimension(100, 100));
+        jPanel1.add(lblImagenTropa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 100, 90));
 
         lblSeleccionarTropas.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         lblSeleccionarTropas.setForeground(new java.awt.Color(255, 255, 255));
         lblSeleccionarTropas.setText("Seleccione un camino");
         jPanel1.add(lblSeleccionarTropas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 220, 20));
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox2.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(102, 102, 102));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Camino 1", "Camino 2" }));
@@ -247,7 +251,6 @@ public class FrmBatalla extends javax.swing.JFrame {
         lblSeleccionarCamino.setText("Seleccione una Tropa");
         jPanel1.add(lblSeleccionarCamino, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 220, 20));
 
-        cmbTiposTropas.setBackground(new java.awt.Color(255, 255, 255));
         cmbTiposTropas.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         cmbTiposTropas.setForeground(new java.awt.Color(102, 102, 102));
         cmbTiposTropas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arquero", "Caballero", "Mago" }));
@@ -298,7 +301,9 @@ public class FrmBatalla extends javax.swing.JFrame {
 
     private void cmbTiposTropasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTiposTropasActionPerformed
         // TODO add your handling code here:
-        
+        String tipo = (String) cmbTiposTropas.getSelectedItem();
+actualizarImagenTropa(tipo);
+
     }//GEN-LAST:event_cmbTiposTropasActionPerformed
 
     private void btnAgregarTropaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTropaActionPerformed
@@ -308,7 +313,7 @@ public class FrmBatalla extends javax.swing.JFrame {
         int contador=0;
         
         if (tropasAgregadas >= limite) {
-        lblTropasAgregadas.setText("Llegaste al limite de esta ronda");
+        lblImagenTropa.setText("Llegaste al limite de esta ronda");
         return;
         }
 
@@ -350,11 +355,11 @@ public class FrmBatalla extends javax.swing.JFrame {
             
             batalla.prepararJugador(camino, tropa);
             tropasAgregadas++;
-            lblTropasAgregadas.setText("Tropas agregadas: " + tropasAgregadas + "/" + limite);
+            lblImagenTropa.setText("Tropas agregadas: " + tropasAgregadas + "/" + limite);
 
             
            if (tropasAgregadas == limite) {
-        lblTropasAgregadas.setText("Llegaste al limite de esta ronda");
+        lblImagenTropa.setText("Llegaste al limite de esta ronda");
         btnAgregarTropa.setEnabled(false);
     }
            
@@ -416,7 +421,7 @@ public class FrmBatalla extends javax.swing.JFrame {
                 batalla.AumentarRonda();
                 tropasAgregadas = 0;//devolver parametro reiniciado
                 btnAgregarTropa.setEnabled(true);//permite boton para agregar tropa
-                lblTropasAgregadas.setText("Nueva ronda: " + " , maximo: "+batalla.getRonda()+" : " + 1);
+                lblImagenTropa.setText("Nueva ronda: " + " , maximo: "+batalla.getRonda()+" : " + 1);
                 
             }
 
@@ -431,6 +436,30 @@ public class FrmBatalla extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_btnEmpezarBatallaActionPerformed
+
+    private void actualizarImagenTropa(String tipo) {
+    String ruta = switch (tipo) {
+        case "Arquero" -> "/imagenes/arquero.jpeg";
+        case "Caballero" -> "/imagenes/caballero.jpeg";
+        case "Mago" -> "/imagenes/mago.jpeg";
+        default -> null;
+    };
+
+    if (ruta == null) {
+        lblImagenTropa.setIcon(null);
+        return;
+    }
+
+    ImageIcon iconoBase = new ImageIcon(getClass().getResource(ruta));
+    Image img = iconoBase.getImage().getScaledInstance(
+            lblImagenTropa.getWidth(),
+            lblImagenTropa.getHeight(),
+            Image.SCALE_SMOOTH
+    );
+
+    ImageIcon iconoFinal = new ImageIcon(img);
+    lblImagenTropa.setIcon(iconoFinal);
+}
 
     /**
      * @param args the command line arguments
@@ -460,11 +489,11 @@ public class FrmBatalla extends javax.swing.JFrame {
     private javax.swing.JLabel lblCPU;
     private javax.swing.JLabel lblCastilloCPUimg1;
     private javax.swing.JLabel lblCastilloJugadorimg;
+    private javax.swing.JLabel lblImagenTropa;
     private javax.swing.JLabel lblJugador1;
     private javax.swing.JLabel lblResultadoBatalla;
     private javax.swing.JLabel lblSeleccionarCamino;
     private javax.swing.JLabel lblSeleccionarTropas;
-    private javax.swing.JLabel lblTropasAgregadas;
     private javax.swing.JLabel lblTropasAgregadasCPU;
     private javax.swing.JLabel lblVidaCPU;
     private javax.swing.JLabel lblVidaJugador;
