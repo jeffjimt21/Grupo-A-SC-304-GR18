@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package ColaBatalla;
 
 import tropas.Tropa;
@@ -29,7 +33,7 @@ public class Cola {
     
     }
     
-    public String desencolar() throws Exception{
+    public Tropa desencolar() throws Exception{
         if (frente==null) {
             throw new Exception("Cola vacia");
         }
@@ -40,22 +44,25 @@ public class Cola {
         if (frente==null) {
             ultimo=null;
         }
-        return tipo;
+        return dato;
     
     }
     
-    public String frente()throws Exception{
+    public Tropa frente()throws Exception{
     
         if (frente==null) {
             throw new Exception ("Cola vacia");
         }
         
-        return frente.getDato().getTipo();
+        return frente.getDato();
         
     }
     
     public boolean estaVacia(){
         return frente==null;
     }
+    
+    
+
     
 }
